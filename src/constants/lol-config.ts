@@ -1,5 +1,5 @@
 export const LOL_CONFIG = {
-    api_key: "RGAPI-eae978ab-e133-4eb7-bac0-341eab2b25b8", // Your API key, https://developer.riotgames.com/
+    api_key: "", // Your API key, https://developer.riotgames.com/
     summoner_name: "Arkrasett", // Your summoner name
     summoner_region: "LA2", // Your summoner region
     interval: 5000, // Refresh interval in ms
