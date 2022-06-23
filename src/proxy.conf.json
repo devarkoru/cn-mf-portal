@@ -1,6 +1,7 @@
 {
-    "/api": {
+    "/lol/league/*": {
     "target": "https://la2.api.riotgames.com",
-    "secure": false
+    "secure": false,
+    "logLevel": "debug"
     }
 }
