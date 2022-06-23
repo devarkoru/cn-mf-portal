@@ -20,6 +20,8 @@
         "build": {
           "builder": "@angular-builders/custom-webpack:browser",
           "options": {
+            "browserTarget": "mf-portal:build",
+            "proxyConfig": "src/proxy.conf.json",
             "outputPath": "dist/mf-portal",
             "index": "src/index.html",
             "main": "src/main.single-spa.ts",
