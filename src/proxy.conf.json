@@ -1,0 +1,6 @@
+{
+    "/api": {
+    "target": "https://la2.api.riotgames.com",
+    "secure": false
+    }
+}
