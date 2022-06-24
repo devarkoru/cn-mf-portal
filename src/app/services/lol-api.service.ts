@@ -28,7 +28,7 @@ export class LolApiService {
   constructor(private http: HttpClient) { }
 
   getSummonerInfo(): Observable<Summoner[]> {
-    return this.http.get<Summoner[]>(RIOT_API_URL + RUTAS.lolSummoner + environment.summonerEncript,requestOptions
+    return this.http.get<Summoner[]>(RIOT_API_URL + RUTAS.lolSummoner + environment.summonerEncript
     )
 
   }
