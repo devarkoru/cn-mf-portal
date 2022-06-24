@@ -28,8 +28,7 @@ export class LolApiService {
     return this.http.get<Summoner[]>(
       RIOT_API_URL +
       RUTAS.lolSummoner +
-      environment.summonerEncript,
-      requestOptions
+      environment.summonerEncript
     )
 
   }
