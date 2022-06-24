@@ -13,9 +13,14 @@ const headerDict = {
   "X-Riot-Token": environment.RIOT_API_DEV_KEY,
 }
 
-const requestOptions = {
-  headers: new HttpHeaders(headerDict),
-};
+const httpOptions = {
+  headers: new HttpHeaders()
+}
+
+httpOptions.headers.append('Access-Control-Allow-Origin', '*');
+httpOptions.headers.append('Content-Type', 'application/json');
+httpOptions.headers.append('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+httpOptions.headers.append('Authorization', headerDict.toString())
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +30,7 @@ export class LolApiService {
   constructor(private http: HttpClient) { }
 
   getSummonerInfo(): Observable<Summoner[]> {
-    return this.http.get<Summoner[]>(RIOT_API_URL + RUTAS.lolSummoner + environment.summonerEncript,requestOptions
+    return this.http.get<Summoner[]>(RIOT_API_URL + RUTAS.lolSummoner + environment.summonerEncript,httpOptions
     )
 
   }
