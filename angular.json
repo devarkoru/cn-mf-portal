@@ -78,7 +78,8 @@
           "builder": "@angular-builders/custom-webpack:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "mf-portal:build:production"
+              "browserTarget": "mf-portal:build:production",
+              "proxyConfig": "src/proxy.conf.json"
             },
             "development": {
               "browserTarget": "mf-portal:build:development"
