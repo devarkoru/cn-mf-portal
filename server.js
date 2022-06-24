@@ -7,19 +7,14 @@ var app = express()
 
 app.use(cors())
 
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header(
-    "Access-Control-Allow-Headers", "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Accept, x-riot-token, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers");
-  if (req.method === "OPTIONS") {
-    res.header(
-      "Access-Control-Allow-Methods",
-      "POST, PUT, PATCH, GET, DELETE"
-    )
-    return res.status(200).json({})
-  }
-  next()
-})
+//enables cors
+app.use(cors({
+  'allowedHeaders': ['x-riot-token', 'Content-Type'],
+  'exposedHeaders': ['sessionId'],
+  'origin': '*',
+  'methods': 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  'preflightContinue': false
+}));
 
 app.use(express.static(path.join(__dirname, "dist/mf-portal")))
   .get("*", (req, res) => {
