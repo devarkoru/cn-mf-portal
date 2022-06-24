@@ -7,19 +7,21 @@ var app = express()
 
 app.use(cors())
 
+app.options('*', cors());
+
 var whitelist = ['https://la2.api.riotgames.com']
-var corsOptions = {
-  origin: function (origin, callback) {
-    if (whitelist.indexOf(origin) !== -1) {
-      callback(null, true)
-    } else {
-      callback(new Error('Not allowed by CORS'))
-    }
+var corsOptionsDelegate = function (req, callback) {
+  var corsOptions;
+  if (whitelist.indexOf(req.header('X-RIOT-TOKEN')) !== -1) {
+    corsOptions = { origin: true } // reflect (enable) the requested origin in the CORS response
+  } else {
+    corsOptions = { origin: false } // disable CORS for this request
   }
+  callback(null, corsOptions) // callback expects two parameters: error and options
 }
 
 app.use(express.static(path.join(__dirname, "dist/mf-portal")))
-  .get("*", cors(corsOptions), (req, res) => {
+  .get("*", cors(corsOptionsDelegate), (req, res) => {
     res.sendFile("index.html", { root: "dist/mf-portal" });
   })
   .listen(PORT, () => console.log(`Listening on ${PORT}`));
