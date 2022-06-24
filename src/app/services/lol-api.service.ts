@@ -15,12 +15,9 @@ const headerDict = {
 
 const requestOptions = {
   headers: new HttpHeaders(headerDict),
-  
 };
 
-requestOptions.headers.append('Access-Control-Allow-Origin', '*');
-requestOptions.headers.append('Content-Type', 'application/json');
-requestOptions.headers.append('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+requestOptions.headers.append('Access-Control-Allow-Origin','*');
 
 @Injectable({
   providedIn: 'root'
