@@ -9,16 +9,6 @@ import { Personas } from 'src/domains/personas';
 
 const RIOT_API_URL = 'https://la2.api.riotgames.com';
 
-const headerDict = {
-  "X-Riot-Token": environment.RIOT_API_DEV_KEY,
-}
-
-const requestOptions = {
-  headers: new HttpHeaders(headerDict),
-};
-
-requestOptions.headers.append('Access-Control-Allow-Origin','*');
-requestOptions.headers.append('Access-Control-Allow-Headers','X-RIOT-TOKEN')
 
 @Injectable({
   providedIn: 'root'
@@ -28,7 +18,7 @@ export class LolApiService {
   constructor(private http: HttpClient) { }
 
   getSummonerInfo(): Observable<Summoner[]> {
-    return this.http.get<Summoner[]>(RIOT_API_URL + RUTAS.lolSummoner + environment.summonerEncript
+    return this.http.get<Summoner[]>(RIOT_API_URL + RUTAS.lolSummoner + environment.summonerEncript + '?api_key=' + environment.RIOT_API_DEV_KEY
     )
 
   }
