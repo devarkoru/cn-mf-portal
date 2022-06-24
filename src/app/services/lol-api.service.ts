@@ -18,6 +18,7 @@ const requestOptions = {
 };
 
 requestOptions.headers.append('Access-Control-Allow-Origin','*');
+requestOptions.headers.append('Access-Control-Allow-Headers','X-RIOT-TOKEN')
 
 @Injectable({
   providedIn: 'root'
