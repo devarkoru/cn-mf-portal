@@ -8,11 +8,14 @@ var app = express()
 app.use(cors())
 
 app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Credentials", "true");
-  res.setHeader("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
-  res.setHeader("Access-Control-Allow-Headers", "*");
-  next();
+  header('Access-Control-Allow-Origin: *');
+  header("Access-Control-Allow-Headers: X-RIOT-TOKEN, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method");
+  header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
+  header("Allow: GET, POST, OPTIONS, PUT, DELETE");
+  $method = $_SERVER['REQUEST_METHOD'];
+  if($method == "OPTIONS") {
+      next();
+  }
 })
 
 app.use(express.static(path.join(__dirname, "dist/mf-portal")))
